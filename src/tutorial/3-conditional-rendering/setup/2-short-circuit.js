@@ -6,7 +6,7 @@ const ShortCircuit = () => {
   // const firstValue = text || 'hello world';
   // const secondValue = text && 'hello world';
 
-  return <h2>short circuit</h2>;
+  return <h2>short circuit  {'radda' && '} </h2>;
 };
 
 export default ShortCircuit;
