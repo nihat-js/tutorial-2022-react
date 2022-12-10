@@ -1,12 +1,12 @@
 import React from 'react'
-import UseEffectBasics from './tutorial/2-useEffect/setup/1-useEffect-basics'
-
-
+// import UseEffectFetchData from './tutorial/2-useEffect/setup/3-useEffect-fetch-data'
+import UseEffectFetchData from './tutorial/2-useEffect/final/3-useEffect-fetch-data'
+import UseEffectFetchDataSetup from './tutorial/2-useEffect/setup/3-useEffect-fetch-data'
 function App() {
   return (
     <div className='container'>
       <h2>Advanced Tutorial</h2>
-      <UseEffectBasics> </UseEffectBasics>
+      <UseEffectFetchDataSetup> </UseEffectFetchDataSetup>
     </div>
   )
 }
