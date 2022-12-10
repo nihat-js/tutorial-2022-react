@@ -9,9 +9,11 @@ const UseStateCounter = () => {
   }
   const valReset = () => {
     setVal(0)
+    document.title = "Resetted"
   }
   const valIncrease = () => {
     setVal(val + 1)
+    document.title = "Increased"
   }
 
 
