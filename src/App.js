@@ -1,11 +1,10 @@
 import React from 'react'
-import ControlledInputs from './tutorial/4-forms/setup/1-controlled-inputs'
-
+import UseRefBasics from './tutorial/5-useRef/setup/1-useRef-basics'
 function App() {
   return (
     <div className='container'>
       <h2>Advanced Tutorial</h2>
-      <ControlledInputs> </ControlledInputs>
+      <UseRefBasics> </UseRefBasics>
     </div>
   )
 }

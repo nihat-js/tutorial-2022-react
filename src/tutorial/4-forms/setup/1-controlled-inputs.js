@@ -9,10 +9,23 @@ const ControlledInputs = () => {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [people, setPeople] = useState([])
+
+
 
   const formHandler = (e) => {
     e.preventDefault();
-    console.log(name, )
+    if (name && email) {
+      const newPerson = { name: name, email: email }
+      setPeople(people => {
+        return [...people, newPerson]
+      })
+      setName('')
+      setEmail('')
+
+    } else {
+      console.log('Empty Problem')
+    }
   }
 
   return (
@@ -27,9 +40,17 @@ const ControlledInputs = () => {
           <input type='text' value={email} onChange={(e) => { setEmail(e.target.value) }} ></input>
         </div>
         <div className='form-group'>
-          <button type='submit'>  Send it   </button>
+          <button type='submit'>  Add Person  </button>
         </div>
       </form>
+      <div className='people'>
+        {people.map((person, index) => {
+          return <div className='item'>
+            <span> {person.name} </span>
+            <span> {person.email}  </span>
+          </div>
+        })}
+      </div>
     </>
   )
 };
