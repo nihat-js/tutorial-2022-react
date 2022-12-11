@@ -3,6 +3,8 @@ import { data } from '../../../data';
 // more components
 // fix - context api, redux (for more complex cases)
 
+const PeopleContext = React.createContext()
+
 const ContextAPI = () => {
   const [people, setPeople] = useState(data);
   const removePerson = (id) => {
@@ -13,7 +15,9 @@ const ContextAPI = () => {
   return (
     <>
       <h3>prop drilling</h3>
-      <List people={people} removePerson={removePerson} />
+      <PeopleContext.Provider value={people}>
+        <List people={people} removePerson={removePerson} />
+      </PeopleContext.Provider>
     </>
   );
 };
