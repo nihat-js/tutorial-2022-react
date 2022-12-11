@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { data } from '../../../data';
 // more components
 // fix - context api, redux (for more complex cases)
@@ -8,24 +8,32 @@ import { data } from '../../../data';
 const PropDrilling = () => {
 
   const [people, setPeople] = useState(data)
+  const removePeople = (id) => {
+    setPeople(people => {
+      return people.filter(p => id !== p.id)
+    })
+  }
+  useEffect(() => {
+    // removePeople(2) 
+  }, [])
   return (
     <>
       <h3> Prop Drilling </h3>
       <div>
-        <PeopleList people={people} ></PeopleList>
+        <PeopleList people={people} removePeople={removePeople} ></PeopleList>
       </div>
     </>
   )
 };
 
 
-const PeopleList = ({ people }) => {
+const PeopleList = (props) => {
   return (
     <>
-      {people.map(p => {
+      {props.people.map(p => {
         return (
           <div key={p.id}>
-            <PeopleSingle data={p}>  </PeopleSingle>
+            <PeopleSingle person={p} removePeople={props.removePeople} >  </PeopleSingle>
           </div>
         )
       })}
@@ -36,7 +44,7 @@ const PeopleList = ({ people }) => {
 const PeopleSingle = (props) => {
   return (
     <div >
-      <span> {props.data.id}  </span> <span>{props.data.name}  </span>
+      <span> {props.person.id}  </span> <span>{props.person.name}  </span> < button onClick={() => props.removePeople(props.person.id)}>  Remove It </button>
     </div>
   )
 }
