@@ -15,7 +15,7 @@ const ContextAPI = () => {
   return (
     <>
       <h3>prop drilling</h3>
-      <PeopleContext.Provider value={people}>
+      <PeopleContext.Provider value={{ people, removePerson }}>
         <List people={people} removePerson={removePerson} />
       </PeopleContext.Provider>
     </>
@@ -39,10 +39,12 @@ const List = ({ people, removePerson }) => {
 };
 
 const SinglePerson = ({ id, name, removePerson }) => {
+  const contextData = useContext(PeopleContext)
+  console.log(contextData)
   return (
     <div className='item'>
       <h4>{name}</h4>
-      <button onClick={() => removePerson(id)}>remove</button>
+      <button onClick={() => contextData.removePerson(id)}>remove</button>
     </div>
   );
 };
